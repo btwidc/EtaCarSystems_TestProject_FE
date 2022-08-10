@@ -1,0 +1,15 @@
+.employees-table-container {
+  height: 400px;
+  width: 100%;
+
+  .employees-table {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+    border: var(--custom-border);
+
+    .employees-table-column-name {
+      font-size: 18px;
+    }
+  }
+}

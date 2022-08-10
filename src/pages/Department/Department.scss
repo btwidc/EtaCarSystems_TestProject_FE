@@ -1,0 +1,10 @@
+.department-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  margin-bottom: 50px;
+}
+
+.department-employees-header {
+  margin-bottom: 20px;
+}
