@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { getEmployeesAction } from '../../store/actions/employeeActions';
+
 import { DataGrid } from '@mui/x-data-grid';
 
 import CustomHeader from '../../additionalСomponents/CustomHeader/CustomHeader';
@@ -10,28 +14,26 @@ import './Employees.scss';
 const columns = [
   {
     field: 'id',
-    headerName: 'ID',
-    headerClassName: 'employees-table-column-name',
-    width: 50,
+    hide: true,
   },
   {
     field: 'name',
     headerName: 'First name',
     headerClassName: 'employees-table-column-name',
-    width: 160,
+    width: 140,
   },
   {
     field: 'surname',
     headerName: 'Last name',
     headerClassName: 'employees-table-column-name',
-    width: 180,
+    width: 160,
   },
   {
     field: 'position',
     headerName: 'Position',
     headerClassName: 'employees-table-column-name',
     sortable: false,
-    width: 280,
+    width: 300,
   },
   {
     field: 'company',
@@ -49,26 +51,10 @@ const columns = [
   },
 ];
 
-const rows = [
-  {
-    id: 1,
-    name: 'Kirill',
-    surname: 'Kravchenko',
-    position: 'Team Lead Node.js Developer',
-    company: 'EtaCar Systems',
-    addition_date: 'AUG-07-2022 02:49PM',
-  },
-  {
-    id: 2,
-    name: 'Aleksandr',
-    surname: 'Burkovski',
-    position: 'Junior Node.js Developer',
-    company: 'EtaCar Systems',
-    addition_date: 'AUG-06-2022 02:49PM',
-  },
-];
-
 const Employees = () => {
+  const { employeesList } = useSelector((state) => state.employee);
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const navigateToEmployeeForm = () => {
@@ -79,6 +65,9 @@ const Employees = () => {
     navigate(`/employee/${employee.id}`);
   };
 
+  useEffect(() => {
+    dispatch(getEmployeesAction());
+  }, []);
   return (
     <>
       <CustomHeader
@@ -94,7 +83,7 @@ const Employees = () => {
             },
           }}
           className="employees-table"
-          rows={rows}
+          rows={employeesList}
           columns={columns}
           pageSize={5}
           rowsPerPageOptions={[5]}

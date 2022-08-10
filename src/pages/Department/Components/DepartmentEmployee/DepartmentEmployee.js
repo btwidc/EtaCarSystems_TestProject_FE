@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './DepartmentEmployee.scss';
 
-const DepartmentEmployee = ({ fullName, position }) => {
+const DepartmentEmployee = ({ id, fullName, position }) => {
   return (
     <div className="department-employee">
-      <h4>{fullName}</h4>
+      <Link to={`/employee/${id}`}>
+        <h4 className="department-employee-label">{fullName}</h4>
+      </Link>
       <h5>{position}</h5>
     </div>
   );

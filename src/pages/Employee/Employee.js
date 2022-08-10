@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { getEmployeeAction } from '../../store/actions/employeeActions';
 
 import CustomHeader from '../../additionalСomponents/CustomHeader/CustomHeader';
 import CustomInfoField from '../../additionalСomponents/CustomInfoField/CustomInfoField';
@@ -6,7 +10,16 @@ import CustomInfoField from '../../additionalСomponents/CustomInfoField/CustomI
 import './Employee.scss';
 
 const Employee = () => {
+  const { employee } = useSelector((state) => state.employee);
+
+  const { id } = useParams();
+  const dispatch = useDispatch();
+
   const deleteEmployee = () => {};
+
+  useEffect(() => {
+    dispatch(getEmployeeAction(id));
+  }, []);
   return (
     <>
       <CustomHeader
@@ -15,10 +28,16 @@ const Employee = () => {
         onClickButton={deleteEmployee}
       />
       <div className="employee-container">
-        <CustomInfoField label="Full name" value="Kirill Kravchenko" />
-        <CustomInfoField label="Position" value="Junior Node.js Developer" />
-        <CustomInfoField label="Company" value="EtaCar Systems" />
-        <CustomInfoField label="Department" value="HR" />
+        <CustomInfoField
+          label="Full name"
+          value={`${employee?.name} ${employee?.surname}`}
+        />
+        <CustomInfoField label="Position" value={employee?.position} />
+        <CustomInfoField label="Company" value={employee?.company} />
+        <CustomInfoField
+          label="Department"
+          value={employee?.department?.name}
+        />
       </div>
     </>
   );
