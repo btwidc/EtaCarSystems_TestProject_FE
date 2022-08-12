@@ -1,0 +1,12 @@
+.department-employee {
+  width: 100%;
+  border-bottom: 2px solid var(--text-color);
+  margin-bottom: 5px;
+  padding-left: 2px;
+
+  .department-employee-label {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
