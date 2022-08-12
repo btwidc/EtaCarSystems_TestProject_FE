@@ -6,7 +6,7 @@ const CustomInfoField = ({ label, value }) => {
   return (
     <div className="info-field">
       <h3>{label}</h3>
-      <h4>{value}</h4>
+      {value ? <h4>{value}</h4> : <h4>none</h4>}
     </div>
   );
 };

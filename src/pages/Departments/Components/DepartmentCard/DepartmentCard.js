@@ -22,9 +22,13 @@ const DepartmentCard = ({
         <h4>{creationDate}</h4>
         <h5>Number of employees: {numberOfEmployees}</h5>
         <span>Head: </span>
-        <Link to={`/employee/${departmentHeadId}`}>
-          <span>{head}</span>
-        </Link>
+        {departmentHeadId ? (
+          <Link to={`/employee/${departmentHeadId}`}>
+            <span>{head}</span>
+          </Link>
+        ) : (
+          <span>empty</span>
+        )}
       </div>
     </div>
   );

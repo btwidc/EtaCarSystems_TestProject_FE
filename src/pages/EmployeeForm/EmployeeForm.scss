@@ -6,5 +6,9 @@
   display: flex;
   justify-content: flex-start;
   flex-flow: row wrap;
+}
+
+.employee-form-error-message {
+  color: red;
   margin-bottom: 20px;
 }

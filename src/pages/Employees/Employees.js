@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
+
 import { useNavigate } from 'react-router-dom';
+import { EMPLOYEE_FORM_ROUTE } from '../../routes/routesPaths';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getEmployeesAction } from '../../store/actions/employeeActions';
@@ -52,13 +54,13 @@ const columns = [
 ];
 
 const Employees = () => {
-  const { employeesList } = useSelector((state) => state.employee);
+  const { employeesList, employee } = useSelector((state) => state.employee);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const navigateToEmployeeForm = () => {
-    navigate('/employee-form');
+    navigate(EMPLOYEE_FORM_ROUTE);
   };
 
   const getEmployeeOnRowClick = (employee) => {
@@ -67,7 +69,7 @@ const Employees = () => {
 
   useEffect(() => {
     dispatch(getEmployeesAction());
-  }, []);
+  }, [employee]);
   return (
     <>
       <CustomHeader

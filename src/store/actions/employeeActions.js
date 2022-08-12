@@ -39,3 +39,63 @@ export const getEmployeeAction = (id) => {
     }
   };
 };
+
+export const addEmployeeAction = (
+  name,
+  surname,
+  position,
+  isHead,
+  departmentName,
+) => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: EMPLOYEE_ACTIONS_TYPES.ADD_EMPLOYEE_ACTION,
+      });
+      const newEmployee = await EmployeeService.addEmployee(
+        name,
+        surname,
+        position,
+        isHead,
+        departmentName,
+      );
+      dispatch({
+        type: EMPLOYEE_ACTIONS_TYPES.ADD_EMPLOYEE_SUCCESS,
+        payload: newEmployee.data,
+      });
+    } catch (e) {
+      if (e.response.status === 404) {
+        dispatch({
+          type: EMPLOYEE_ACTIONS_TYPES.ADD_EMPLOYEE_NOT_FOUND,
+        });
+      } else if (e.response.status === 409) {
+        dispatch({
+          type: EMPLOYEE_ACTIONS_TYPES.ADD_EMPLOYEE_ALREADY_EXISTS,
+        });
+      } else {
+        dispatch({
+          type: EMPLOYEE_ACTIONS_TYPES.ADD_EMPLOYEE_FAILED,
+        });
+      }
+    }
+  };
+};
+
+export const deleteEmployeeAction = (id) => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: EMPLOYEE_ACTIONS_TYPES.DELETE_EMPLOYEE_ACTION,
+      });
+      const deletedEmployee = await EmployeeService.deleteEmployee(id);
+      dispatch({
+        type: EMPLOYEE_ACTIONS_TYPES.DELETE_EMPLOYEE_SUCCESS,
+        payload: deletedEmployee.data,
+      });
+    } catch (e) {
+      dispatch({
+        type: EMPLOYEE_ACTIONS_TYPES.DELETE_EMPLOYEE_FAILED,
+      });
+    }
+  };
+};

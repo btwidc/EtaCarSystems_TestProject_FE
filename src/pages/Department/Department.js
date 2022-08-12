@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+
+import { useNavigate, useParams } from 'react-router-dom';
+import { DEPARTMENTS_ROUTE } from '../../routes/routesPaths';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getDepartmentAction } from '../../store/actions/departmentActions';
+import {
+  getDepartmentAction,
+  deleteDepartmentAction,
+} from '../../store/actions/departmentActions';
 
 import CustomHeader from '../../additionalСomponents/CustomHeader/CustomHeader';
 import CustomInfoField from '../../additionalСomponents/CustomInfoField/CustomInfoField';
@@ -15,8 +20,12 @@ const Department = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const deleteDepartment = () => {};
+  const deleteDepartment = () => {
+    dispatch(deleteDepartmentAction(id));
+    navigate(DEPARTMENTS_ROUTE);
+  };
 
   useEffect(() => {
     dispatch(getDepartmentAction(id));

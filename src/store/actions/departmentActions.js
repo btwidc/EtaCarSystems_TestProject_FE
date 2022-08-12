@@ -39,3 +39,50 @@ export const getDepartmentAction = (id) => {
     }
   };
 };
+
+export const addDepartmentAction = (name, description) => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: DEPARTMENT_ACTIONS_TYPES.ADD_DEPARTMENT_ACTION,
+      });
+      const newDepartment = await DepartmentService.addDepartment(
+        name,
+        description,
+      );
+      dispatch({
+        type: DEPARTMENT_ACTIONS_TYPES.ADD_DEPARTMENT_SUCCESS,
+        payload: newDepartment.data,
+      });
+    } catch (e) {
+      if (e.response.status === 409) {
+        dispatch({
+          type: DEPARTMENT_ACTIONS_TYPES.ADD_DEPARTMENT_ALREADY_EXISTS,
+        });
+      } else {
+        dispatch({
+          type: DEPARTMENT_ACTIONS_TYPES.ADD_DEPARTMENT_FAILED,
+        });
+      }
+    }
+  };
+};
+
+export const deleteDepartmentAction = (id) => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: DEPARTMENT_ACTIONS_TYPES.DELETE_DEPARTMENT_ACTION,
+      });
+      const deletedDepartment = await DepartmentService.deleteDepartment(id);
+      dispatch({
+        type: DEPARTMENT_ACTIONS_TYPES.DELETE_DEPARTMENT_SUCCESS,
+        payload: deletedDepartment.data,
+      });
+    } catch (e) {
+      dispatch({
+        type: DEPARTMENT_ACTIONS_TYPES.DELETE_DEPARTMENT_FAILED,
+      });
+    }
+  };
+};

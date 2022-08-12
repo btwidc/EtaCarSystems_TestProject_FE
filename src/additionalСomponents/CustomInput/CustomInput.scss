@@ -30,5 +30,9 @@
     &:focus {
       border: var(--input-border-hover);
     }
+
+    &:-webkit-autofill {
+      -webkit-text-fill-color: var(--text-color);
+    }
   }
 }

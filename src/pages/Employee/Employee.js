@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+
+import { useNavigate, useParams } from 'react-router-dom';
+import { EMPLOYEES_ROUTE } from '../../routes/routesPaths';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getEmployeeAction } from '../../store/actions/employeeActions';
+import {
+  getEmployeeAction,
+  deleteEmployeeAction,
+} from '../../store/actions/employeeActions';
 
 import CustomHeader from '../../additionalСomponents/CustomHeader/CustomHeader';
 import CustomInfoField from '../../additionalСomponents/CustomInfoField/CustomInfoField';
@@ -14,8 +19,12 @@ const Employee = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const deleteEmployee = () => {};
+  const deleteEmployee = () => {
+    dispatch(deleteEmployeeAction(id));
+    navigate(EMPLOYEES_ROUTE);
+  };
 
   useEffect(() => {
     dispatch(getEmployeeAction(id));

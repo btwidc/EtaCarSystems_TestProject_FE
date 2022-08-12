@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
+
 import { useNavigate } from 'react-router-dom';
+import { DEPARTMENT_FORM_ROUTE } from '../../routes/routesPaths';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getDepartmentsAction } from '../../store/actions/departmentActions';
@@ -10,18 +12,20 @@ import DepartmentCard from './Components/DepartmentCard/DepartmentCard';
 import './Departments.scss';
 
 const Departments = () => {
-  const { departmentsList } = useSelector((state) => state.department);
+  const { departmentsList, department } = useSelector(
+    (state) => state.department,
+  );
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const navigateToDepartmentForm = () => {
-    navigate('/department-form');
+    navigate(DEPARTMENT_FORM_ROUTE);
   };
 
   useEffect(() => {
     dispatch(getDepartmentsAction());
-  }, []);
+  }, [department]);
   return (
     <>
       <CustomHeader
