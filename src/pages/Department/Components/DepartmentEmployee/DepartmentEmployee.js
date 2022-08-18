@@ -7,7 +7,7 @@ const DepartmentEmployee = ({ id, fullName, position }) => {
   return (
     <div className="department-employee">
       <Link to={`/employee/${id}`}>
-        <h4 className="department-employee-label">{fullName}</h4>
+        <h4 className="department-employee__label">{fullName}</h4>
       </Link>
       <h5>{position}</h5>
     </div>

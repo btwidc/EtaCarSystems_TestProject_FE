@@ -1,4 +1,4 @@
-.nav-menu-list-container {
+.nav-menu__list {
   width: 100%;
   padding-left: 15%;
 
@@ -7,7 +7,7 @@
     padding: 0;
   }
 
-  .nav-menu-list {
+  .nav-menu__items {
     display: flex;
     flex-direction: column;
     min-height: 200px;
@@ -25,7 +25,7 @@
       flex-direction: column;
     }
 
-    .nav-item {
+    .nav-menu__item {
       flex: 1 1 auto;
       display: flex;
       align-items: center;

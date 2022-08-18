@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './CustomInfoField.scss';
+import './InfoField.scss';
 
-const CustomInfoField = ({ label, value }) => {
+const InfoField = ({ label, value }) => {
   return (
     <div className="info-field">
       <h3>{label}</h3>
@@ -11,4 +11,4 @@ const CustomInfoField = ({ label, value }) => {
   );
 };
 
-export default CustomInfoField;
+export default InfoField;

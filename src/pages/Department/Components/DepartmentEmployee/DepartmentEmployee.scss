@@ -4,7 +4,7 @@
   margin-bottom: 5px;
   padding-left: 2px;
 
-  .department-employee-label {
+  &__label {
     &:hover {
       text-decoration: underline;
     }

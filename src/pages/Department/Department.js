@@ -9,8 +9,8 @@ import {
   deleteDepartmentAction,
 } from '../../store/actions/departmentActions';
 
-import CustomHeader from '../../additionalСomponents/CustomHeader/CustomHeader';
-import CustomInfoField from '../../additionalСomponents/CustomInfoField/CustomInfoField';
+import ContentHeader from '../../additionalСomponents/ContentHeader/ContentHeader';
+import InfoField from '../../additionalСomponents/InfoField/InfoField';
 import DepartmentEmployee from './Components/DepartmentEmployee/DepartmentEmployee';
 
 import './Department.scss';
@@ -32,28 +32,29 @@ const Department = () => {
   }, []);
   return (
     <>
-      <CustomHeader
+      <ContentHeader
         headerTitle="Department Info"
         buttonTitle="Delete"
         onClickButton={deleteDepartment}
       />
-      <div className="department-container">
-        <CustomInfoField label="Name" value={department?.name} />
-        <CustomInfoField
-          label="Creation Date"
-          value={department?.creation_date}
-        />
-        <CustomInfoField label="Description" value={department?.description} />
+      <div className="content__body content__body_department">
+        <div className="department-info">
+          <InfoField label="Name" value={department?.name} />
+          <InfoField label="Creation Date" value={department?.creation_date} />
+          <InfoField label="Description" value={department?.description} />
+        </div>
+        <div className="department-employees">
+          <h2 className="department-employees__header">Employees</h2>
+          {department?.employees?.map((employee) => (
+            <DepartmentEmployee
+              key={employee?.id}
+              id={employee?.id}
+              fullName={`${employee?.name} ${employee?.surname}`}
+              position={employee?.position}
+            />
+          ))}
+        </div>
       </div>
-      <h2 className="department-employees-header">Employees</h2>
-      {department?.employees?.map((employee) => (
-        <DepartmentEmployee
-          key={employee?.id}
-          id={employee?.id}
-          fullName={`${employee?.name} ${employee?.surname}`}
-          position={employee?.position}
-        />
-      ))}
     </>
   );
 };

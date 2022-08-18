@@ -8,7 +8,7 @@ import { getEmployeesAction } from '../../store/actions/employeeActions';
 
 import { DataGrid } from '@mui/x-data-grid';
 
-import CustomHeader from '../../additionalСomponents/CustomHeader/CustomHeader';
+import ContentHeader from '../../additionalСomponents/ContentHeader/ContentHeader';
 import EmployeesTableCustomPagination from './Components/EmployeesTableCustomPagination/EmployeesTableCustomPagination';
 
 import './Employees.scss';
@@ -21,33 +21,33 @@ const columns = [
   {
     field: 'name',
     headerName: 'First name',
-    headerClassName: 'employees-table-column-name',
+    headerClassName: 'employees-table__column',
     width: 140,
   },
   {
     field: 'surname',
     headerName: 'Last name',
-    headerClassName: 'employees-table-column-name',
+    headerClassName: 'employees-table__column',
     width: 160,
   },
   {
     field: 'position',
     headerName: 'Position',
-    headerClassName: 'employees-table-column-name',
+    headerClassName: 'employees-table__column',
     sortable: false,
     width: 300,
   },
   {
     field: 'company',
     headerName: 'Company',
-    headerClassName: 'employees-table-column-name',
+    headerClassName: 'employees-table__column',
     sortable: false,
     width: 160,
   },
   {
     field: 'addition_date',
     headerName: 'Addition date',
-    headerClassName: 'employees-table-column-name',
+    headerClassName: 'employees-table__column',
     sortable: false,
     width: 250,
   },
@@ -72,12 +72,12 @@ const Employees = () => {
   }, [employee]);
   return (
     <>
-      <CustomHeader
+      <ContentHeader
         headerTitle="Employees"
         buttonTitle="Add"
         onClickButton={navigateToEmployeeForm}
       />
-      <div className="employees-table-container">
+      <div className="content__body content__body_employees_table">
         <DataGrid
           sx={{
             '& .MuiDataGrid-row:hover': {

@@ -1,32 +1,21 @@
-.dashboard-container {
-  display: grid;
-  grid-template-columns: [departments] 75% [employees] 25%;
-  width: 100%;
-  height: 100%;
-
+.content__body_dashboard {
   @media screen and (max-width: 720px) {
-    display: flex;
     flex-direction: column;
   }
 
-  .dashboard-header {
-    margin-bottom: 30px;
-  }
-
-  .dashboard-title {
-    font-weight: 700;
-    margin-bottom: 35px;
-  }
-
   .dashboard-departments {
-    grid-column: departments;
+    display: flex;
+    flex-direction: column;
 
-    @media screen and (max-width: 1080px) {
-      display: flex;
-      flex-direction: column;
+    &__header {
+      margin-bottom: 30px;
     }
 
-    .dashboard-departments-cards {
+    &__title {
+      margin-bottom: 35px;
+    }
+
+    &__cards {
       display: flex;
       justify-content: flex-start;
       flex-flow: row wrap;
@@ -34,12 +23,11 @@
   }
 
   .dashboard-employees {
-    grid-column: employees;
-    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
 
-    @media screen and (max-width: 1080px) {
-      display: flex;
-      flex-direction: column;
+    &__title {
+      margin: 80px 0 35px 0;
     }
   }
 }

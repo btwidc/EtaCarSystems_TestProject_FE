@@ -1,0 +1,25 @@
+.form-checkbox {
+  margin-bottom: 20px;
+  margin-right: 100px;
+  padding-left: 10px;
+  width: 30%;
+
+  &__label {
+    margin-bottom: 5px;
+
+    label {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text-color);
+    }
+  }
+
+  &__field {
+    input {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+

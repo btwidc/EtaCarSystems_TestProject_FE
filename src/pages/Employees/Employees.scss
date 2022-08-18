@@ -1,4 +1,4 @@
-.employees-table-container {
+.content__body_employees_table {
   height: 400px;
   width: 100%;
 
@@ -8,7 +8,7 @@
     color: var(--text-color);
     border: var(--custom-border);
 
-    .employees-table-column-name {
+    &__column {
       font-size: 18px;
     }
   }

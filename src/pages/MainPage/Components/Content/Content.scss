@@ -1,11 +1,11 @@
-.content-container {
+.content {
   position: relative;
   display: grid;
   grid-column: content;
   min-height: 100vh;
   background-color: var(--content-bg-color);
 
-  .content {
+  &__wrapper {
     width: 100%;
     height: 100%;
     padding: 30px 60px;
@@ -13,5 +13,17 @@
     @media screen and (max-width: 720px) {
       padding: 20px 40px;
     }
+  }
+
+  &__body {
+    display: flex;
+  }
+
+  &__error {
+    margin-bottom: 20px;
+  }
+
+  &__footer {
+    margin-bottom: 10px;
   }
 }

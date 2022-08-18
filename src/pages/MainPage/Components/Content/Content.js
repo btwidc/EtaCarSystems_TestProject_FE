@@ -6,8 +6,8 @@ import './Content.scss';
 
 const Content = () => {
   return (
-    <div className="content-container">
-      <div className="content">
+    <div className="content">
+      <div className="content__wrapper">
         <AppRouter />
       </div>
     </div>

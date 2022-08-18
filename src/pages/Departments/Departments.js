@@ -6,7 +6,7 @@ import { DEPARTMENT_FORM_ROUTE } from '../../routes/routesPaths';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDepartmentsAction } from '../../store/actions/departmentActions';
 
-import CustomHeader from '../../additionalСomponents/CustomHeader/CustomHeader';
+import ContentHeader from '../../additionalСomponents/ContentHeader/ContentHeader';
 import DepartmentCard from './Components/DepartmentCard/DepartmentCard';
 
 import './Departments.scss';
@@ -28,12 +28,12 @@ const Departments = () => {
   }, [department]);
   return (
     <>
-      <CustomHeader
+      <ContentHeader
         headerTitle="Departments"
         buttonTitle="Add"
         onClickButton={navigateToDepartmentForm}
       />
-      <div className="departments-container">
+      <div className="content__body content__body_departments">
         {departmentsList?.map((department) => (
           <DepartmentCard
             key={department?.id}

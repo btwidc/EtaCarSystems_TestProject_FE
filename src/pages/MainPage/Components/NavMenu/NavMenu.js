@@ -7,8 +7,8 @@ import './NavMenu.scss';
 
 const NavMenu = () => {
   return (
-    <div className="nav-container">
-      <div className="nav-menu-container">
+    <div className="nav-menu">
+      <div className="nav-menu__body">
         <NavMenuHeader />
         <NavMenuList />
       </div>

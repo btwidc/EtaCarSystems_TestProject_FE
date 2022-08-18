@@ -6,8 +6,8 @@ import { EMPLOYEES_ROUTE } from '../../routes/routesPaths';
 import { useDispatch, useSelector } from 'react-redux';
 import { addEmployeeAction } from '../../store/actions/employeeActions';
 
-import CustomInput from '../../additionalСomponents/CustomInput/CustomInput';
-import CustomCheckbox from '../../additionalСomponents/CustomCheckbox/CustomCheckbox';
+import FormInput from '../../additionalСomponents/FormInput/FormInput';
+import FormCheckbox from '../../additionalСomponents/FormCheckbox/FormCheckbox';
 
 import './EmployeeForm.scss';
 
@@ -64,9 +64,9 @@ const EmployeeForm = () => {
   }, [employee]);
   return (
     <>
-      <h2 className="employee-form-header">Employee Form</h2>
-      <div className="employee-form">
-        <CustomInput
+      <h2 className="content__header">Employee Form</h2>
+      <div className="content__body content__body_employee_form">
+        <FormInput
           labelName="Name"
           type="text"
           id="name"
@@ -74,7 +74,7 @@ const EmployeeForm = () => {
           value={employeeFormState?.name}
           onChange={handleInputChange}
         />
-        <CustomInput
+        <FormInput
           labelName="Surname"
           type="text"
           id="surname"
@@ -82,7 +82,7 @@ const EmployeeForm = () => {
           value={employeeFormState?.surname}
           onChange={handleInputChange}
         />
-        <CustomInput
+        <FormInput
           labelName="Position"
           type="text"
           id="position"
@@ -90,7 +90,7 @@ const EmployeeForm = () => {
           value={employeeFormState?.position}
           onChange={handleInputChange}
         />
-        <CustomInput
+        <FormInput
           labelName="Department Name"
           type="text"
           id="departmentName"
@@ -98,10 +98,16 @@ const EmployeeForm = () => {
           value={employeeFormState?.departmentName}
           onChange={handleInputChange}
         />
-        <CustomCheckbox label="Is Head?" onChange={handleCheckboxChange} />
+        <FormCheckbox label="Is Head?" onChange={handleCheckboxChange} />
       </div>
-      {error && <h4 className="employee-form-error-message">{message}</h4>}
-      <button onClick={addEmployee}>Add</button>
+      {error && (
+        <div className="content__error content__error_department_form">
+          <h4>{message}</h4>
+        </div>
+      )}
+      <div className="content__footer">
+        <button onClick={addEmployee}>Add</button>
+      </div>
     </>
   );
 };

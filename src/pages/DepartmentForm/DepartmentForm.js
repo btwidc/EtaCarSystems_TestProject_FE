@@ -6,7 +6,7 @@ import { DEPARTMENTS_ROUTE } from '../../routes/routesPaths';
 import { useDispatch, useSelector } from 'react-redux';
 import { addDepartmentAction } from '../../store/actions/departmentActions';
 
-import CustomInput from '../../additionalСomponents/CustomInput/CustomInput';
+import FormInput from '../../additionalСomponents/FormInput/FormInput';
 
 import './DepartmentForm.scss';
 
@@ -55,9 +55,11 @@ const DepartmentForm = () => {
 
   return (
     <>
-      <h2 className="department-form-header">Department Form</h2>
-      <div className="department-form">
-        <CustomInput
+      <div className="content__header">
+        <h2>Department Form</h2>
+      </div>
+      <div className="content__body content__body_department_form">
+        <FormInput
           labelName="Name"
           type="text"
           id="name"
@@ -65,8 +67,8 @@ const DepartmentForm = () => {
           value={departmentFormState?.name}
           onChange={handleInputChange}
         />
-        <CustomInput
-          labelName="Description"
+        <FormInput
+          labelName=" Description"
           type="text"
           id="description"
           placeholder="Description"
@@ -74,8 +76,14 @@ const DepartmentForm = () => {
           onChange={handleInputChange}
         />
       </div>
-      {error && <h4 className="department-form-error-message">{message}</h4>}
-      <button onClick={addDepartment}>Add</button>
+      {error && (
+        <div className="content__error content__error_department_form">
+          <h4>{message}</h4>
+        </div>
+      )}
+      <div className="content__footer">
+        <button onClick={addDepartment}>Add</button>
+      </div>
     </>
   );
 };

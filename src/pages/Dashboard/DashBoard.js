@@ -25,11 +25,15 @@ const DashBoard = () => {
     dispatch(getEmployeesAction());
   }, []);
   return (
-    <div className="dashboard-container">
+    <div className="content__body content__body_dashboard">
       <div className="dashboard-departments">
-        <h2 className="dashboard-header">Dashboard</h2>
-        <h3 className="dashboard-title">Top 5 Departments</h3>
-        <div className="dashboard-departments-cards">
+        <div className="dashboard-departments__header">
+          <h2>Dashboard</h2>
+        </div>
+        <div className="dashboard-departments__title">
+          <h3>Top 5 Departments</h3>
+        </div>
+        <div className="dashboard-departments__cards">
           {lastDepartments?.map((department) => (
             <DepartmentCard
               key={department?.id}
@@ -44,7 +48,9 @@ const DashBoard = () => {
         </div>
       </div>
       <div className="dashboard-employees">
-        <h3 className="dashboard-title">Recently Added Employees</h3>
+        <div className="dashboard-employees__title">
+          <h3>Recently Added Employees</h3>
+        </div>
         {lastEmployees?.map((employee) => (
           <DepartmentEmployee
             key={employee?.id}

@@ -1,5 +1,8 @@
-.employee-container {
-  display: flex;
+.content__body_employee {
   justify-content: flex-start;
   flex-flow: row wrap;
+
+  @media screen and (max-width: 1080px) {
+    flex-direction: column;
+  }
 }

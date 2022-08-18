@@ -1,4 +1,4 @@
-.department-card-container {
+.department-card {
   border: var(--custom-border);
   border-radius: 5px;
   width: 30%;
@@ -22,7 +22,7 @@
     }
   }
 
-  .department-card-header {
+  &__header {
     margin-bottom: 5px;
 
     span {
@@ -30,7 +30,7 @@
     }
   }
 
-  .department-card-body {
+  &__body {
     span {
       color: var(--text-color);
       font-weight: 500;

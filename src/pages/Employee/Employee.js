@@ -9,8 +9,8 @@ import {
   deleteEmployeeAction,
 } from '../../store/actions/employeeActions';
 
-import CustomHeader from '../../additionalСomponents/CustomHeader/CustomHeader';
-import CustomInfoField from '../../additionalСomponents/CustomInfoField/CustomInfoField';
+import ContentHeader from '../../additionalСomponents/ContentHeader/ContentHeader';
+import InfoField from '../../additionalСomponents/InfoField/InfoField';
 
 import './Employee.scss';
 
@@ -31,19 +31,19 @@ const Employee = () => {
   }, []);
   return (
     <>
-      <CustomHeader
+      <ContentHeader
         headerTitle="Employee Info"
         buttonTitle="Delete"
         onClickButton={deleteEmployee}
       />
-      <div className="employee-container">
-        <CustomInfoField
+      <div className="content__body content__body_employee">
+        <InfoField
           label="Full name"
           value={`${employee?.name} ${employee?.surname}`}
         />
-        <CustomInfoField label="Position" value={employee?.position} />
-        <CustomInfoField label="Company" value={employee?.company} />
-        <CustomInfoField
+        <InfoField label="Position" value={employee?.position} />
+        <InfoField label="Company" value={employee?.company} />
+        <InfoField
           label="Department"
           value={employee?.department?.name}
         />

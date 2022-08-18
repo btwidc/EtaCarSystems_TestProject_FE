@@ -7,11 +7,11 @@ import './NavMenuList.scss';
 
 const NavMenuList = () => {
   return (
-    <div className="nav-menu-list-container">
-      <ul className="nav-menu-list">
+    <div className="nav-menu__list">
+      <ul className="nav-menu__items">
         {navMenuRoutes.map((item) => {
           return (
-            <li key={item.title} className="nav-item">
+            <li key={item.title} className="nav-menu__item">
               <Link to={item.path}>
                 <span>{item.title}</span>
               </Link>
